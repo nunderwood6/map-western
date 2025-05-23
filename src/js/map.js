@@ -1,5 +1,4 @@
 // var d3 = require("d3");
-console.log("hi");
 
 let maplibregl = require("maplibre-gl");
 
@@ -26,33 +25,44 @@ const style = {
 };
 
 // geographic coords top left -> counter clockwise
-// -73.4310300635716828,44.4950662663119232
-// -73.0704385089753572,45.0095067940014886
-const icemap = {
+// -121.9707503187089230,40.1101212998359600
+// -119.3316898341525132,37.9643184340571409
+
+
+const westernFull = {
           coords: [
-            [-73.4310300635716828, 45.0095067940014886],
-            [-73.0704385089753572, 45.0095067940014886],
-            [-73.0704385089753572, 44.4950662663119232],
-            [-73.4310300635716828, 44.4950662663119232],
+            [-121.9707503187089230,40.1101212998359600],
+            [-119.3316898341525132,40.1101212998359600],
+            [-119.3316898341525132,37.9643184340571409],
+            [-121.9707503187089230, 37.9643184340571409],
           ],
-          url: `assets/ice-map.jpg`,
+          url: `assets/synced/toned-shaded.jpg`,
 };
 
-const malletsBay = [[
-              -73.30427451179548,
-              44.60639559890427
+// starting zoom wider
+const wider = [[
+              -121.4987305998364633,38.5189233389010539
             ],
             [
-              -73.17715588086575,
-              44.73659897006388
+              -119.6605278119377118,39.5056242589138549
             ]
-  ];
+];
+
+
+// course extent
+const course = [[
+              -121.0678000000000054,38.8924099999999981
+            ],
+            [
+              -120.2364699999999971,39.2238400000000027
+            ]
+];
             
 
 let map = new maplibregl.Map({
   container: 'map',
   style,
-  bounds: [malletsBay[0],malletsBay[1]],
+  bounds: [wider[0],wider[1]],
   interactive: false,
   maplibreLogo: false,
   attributionControl: false
@@ -60,16 +70,16 @@ let map = new maplibregl.Map({
 
 map.on("load", () => {
   // add image
-  map.addSource("icemap", {
+  map.addSource("western", {
             type: "image",
-            url: icemap.url,
-            coordinates: icemap.coords,
+            url: westernFull.url,
+            coordinates: westernFull.coords,
   });
   map.addLayer(
   {
-    id: "ice-map",
+    id: "western-base",
     type: "raster",
-    source: "icemap",
+    source: "western",
     paint: {
       "raster-fade-duration": 1000
     }
