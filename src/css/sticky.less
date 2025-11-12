@@ -1,0 +1,60 @@
+div.above {
+	// height: 100vh;
+}
+
+div.below {
+	height: 100vh;
+}
+
+.scrolly {
+	position: relative;
+}
+
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	left: 0;
+	top: 0;
+	width: 100%;
+	margin: 0;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	z-index: 0;
+
+}
+
+.steps {
+	position: relative;
+	margin: 0 auto;
+	max-width: 90%;
+	margin-top: -90vh;
+}
+
+.step {
+	margin: 0 auto 2rem auto;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.1);
+	max-width: 500px;
+
+}
+
+.step:last-child {
+	margin-bottom: 0;
+}
+
+.step.is-active p {
+	background-color: goldenrod;
+	color: #3b3b3b;
+}
+
+.step p {
+	// text-align: center;
+	padding: 1rem;
+	font-size: 1rem;
+	background-color: #3b3b3b;
+}
+
+div.spacer {
+	height: 90vh;
+}
